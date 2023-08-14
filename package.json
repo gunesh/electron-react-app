@@ -1,8 +1,10 @@
 {
-  "description": "App",
+  "description": "Desktop App",
+ 
   "main": "./src/main/main.ts",
   "scripts": {
     "build": "concurrently \"npm run build:main\" \"npm run build:renderer\"",
+    "build:winexe": "electron-builder",
     "build:main": "cross-env NODE_ENV=production TS_NODE_TRANSPILE_ONLY=true webpack --config ./.erb/configs/webpack.config.main.prod.ts",
     "build:renderer": "cross-env NODE_ENV=production TS_NODE_TRANSPILE_ONLY=true webpack --config ./.erb/configs/webpack.config.renderer.prod.ts",
     "postinstall": "ts-node .erb/scripts/check-native-dep.js && electron-builder install-app-deps && cross-env NODE_ENV=development TS_NODE_TRANSPILE_ONLY=true webpack --config ./.erb/configs/webpack.config.renderer.dev.dll.ts",
@@ -20,7 +22,10 @@
     "singleQuote": true,
     "overrides": [
       {
-        "files": [".prettierrc", ".eslintrc"],
+        "files": [
+          ".prettierrc",
+          ".eslintrc"
+        ],
         "options": {
           "parser": "json"
         }
@@ -28,29 +33,51 @@
     ]
   },
   "jest": {
-    "moduleDirectories": ["node_modules", "release/app/node_modules", "src"],
-    "moduleFileExtensions": ["js", "jsx", "ts", "tsx", "json"],
+    "moduleDirectories": [
+      "node_modules",
+      "release/app/node_modules",
+      "src"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "ts",
+      "tsx",
+      "json"
+    ],
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/.erb/mocks/fileMock.js",
       "\\.(css|less|sass|scss)$": "identity-obj-proxy"
     },
-    "setupFiles": ["./.erb/scripts/check-build-exists.ts"],
+    "setupFiles": [
+      "./.erb/scripts/check-build-exists.ts"
+    ],
     "testEnvironment": "jsdom",
     "testEnvironmentOptions": {
       "url": "http://localhost/"
     },
-    "testPathIgnorePatterns": ["release/app/dist", ".erb/dll"],
+    "testPathIgnorePatterns": [
+      "release/app/dist",
+      ".erb/dll"
+    ],
     "transform": {
       "\\.(ts|tsx|js|jsx)$": "ts-jest"
     }
   },
   "dependencies": {
+    "bootstrap": "^5.3.1",
     "electron-debug": "^3.2.0",
     "electron-log": "^4.4.8",
     "electron-updater": "^5.3.0",
+    "formik": "^2.4.3",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.8.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.11.2"
+    "react-google-recaptcha": "^3.1.0",
+    "react-helmet": "^6.1.0",
+    "react-router-dom": "^6.14.2",
+    "reactstrap": "^9.2.0",
+    "yup": "^1.2.0"
   },
   "devDependencies": {
     "@electron/notarize": "^1.2.3",
@@ -124,12 +151,19 @@
     "appId": "org.erb.ElectronReact",
     "asar": true,
     "asarUnpack": "**\\*.{node,dll}",
-    "files": ["dist", "node_modules", "package.json"],
+    "files": [
+      "dist",
+      "node_modules",
+      "package.json"
+    ],
     "afterSign": ".erb/scripts/notarize.js",
     "mac": {
       "target": {
         "target": "default",
-        "arch": ["arm64", "x64"]
+        "arch": [
+          "arm64",
+          "x64"
+        ]
       },
       "type": "distribution",
       "hardenedRuntime": true,
@@ -152,10 +186,14 @@
       ]
     },
     "win": {
-      "target": ["nsis"]
+      "target": [
+        "nsis"
+      ]
     },
     "linux": {
-      "target": ["AppImage"],
+      "target": [
+        "AppImage"
+      ],
       "category": "Development"
     },
     "directories": {
@@ -163,11 +201,13 @@
       "buildResources": "assets",
       "output": "release/build"
     },
-    "extraResources": ["./assets/**"],
+    "extraResources": [
+      "./assets/**"
+    ],
     "publish": {
       "provider": "github",
-      "owner": "electron-react-boilerplate",
-      "repo": "electron-react-boilerplate"
+      "owner": "MyDesktopApp",
+      "repo": "MyDesktopApp"
     }
   },
   "devEngines": {
@@ -175,7 +215,10 @@
     "npm": ">=7.x"
   },
   "electronmon": {
-    "patterns": ["!**/**", "src/main/**"],
+    "patterns": [
+      "!**/**",
+      "src/main/**"
+    ],
     "logLevel": "quiet"
   }
 }
