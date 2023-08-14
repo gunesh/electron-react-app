@@ -1,0 +1,30 @@
+.header-section {
+  background-color: #d63724;
+  display: flex;
+}
+
+.header-section .header-section-left {
+  width: 75%;
+}
+
+.header-section .header-section-right {
+  width: 24.996%;
+}
+
+.btn-outline-primary {
+  width: 125px;
+}
+
+.get-quote {
+  background-color: brown!important;
+  color: #fff!important;
+  font-weight: bold!important;
+  border: none!important;
+}
+
+.call-us .get-quote {
+  background-color: #fff!important;
+  color: brown!important;
+  font-weight: bold!important;
+  border: none!important;
+}
