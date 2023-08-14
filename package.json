@@ -1,0 +1,24 @@
+{
+  "name": "stackblitz-starters-plqqqn",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "@types/react": "^18.2.20",
+    "@types/react-dom": "^18.2.7",
+    "electron-debug": "^3.2.0",
+    "electron-log": "^4.4.8",
+    "electron-updater": "^6.1.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.15.0"
+  },
+  "devDependencies": {
+    "react-scripts": "latest"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
